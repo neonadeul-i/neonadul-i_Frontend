@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({
+export const API = axios.create({
     baseURL: "http://10.120.74.223:8080",
     headers: {
         "Access-Control-Allow-Origin": "*",

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { API } from "../../lib/API";
 
-export default function Signup() {
+export default function SignupPage() {
 
     const router = useRouter();
     const inputRef = useRef<any>([]);
@@ -19,7 +19,7 @@ export default function Signup() {
     const array = ["Name", "ID", "PW", "PW check", "Phone", "Address"];
 
     const Sumbit = async () => {
-        const reg_id = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/
+        const reg_id = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@!?.])[A-Za-z\d$@!?.]{8,16}$/
         const reg_pw = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@!?.])[A-Za-z\d$@!?.]{8,16}$/
 
         if (!(Name !== '')) { inputRef.current[0].focus(); }
@@ -36,11 +36,11 @@ export default function Signup() {
                     password: PW,
                     type: Type,
                     name: Name,
-                    phone: Phone.replace(/-/g, ""),
+                    phone: Phone,
                     address: Address,
                 })
                 console.log(res);
-                router.push('/login');
+                router.replace('/login');
             } catch (e: any) {
                 console.log(e);
             }
